@@ -52,8 +52,8 @@ export function isAHeadingBlock(
 
 export async function getHeadedBlocks(blockIds: string[]) {
   let tasks: BlockWithTitle[] = [];
-  for (const blockId in blockIds) {
-    const response = await getBlockChildren(blockId);
+  for (let i = 0; i < blockIds.length; i++) {
+    const response = await getBlockChildren(blockIds[i]);
     const headingBlock = isAHeadingBlock(response);
     if (headingBlock) {
       tasks.push({
